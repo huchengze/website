@@ -88,7 +88,7 @@ Pod 自身不具有自愈能力。如果 Pod 被调度到某{{< glossary_tooltip
 
 <!--
 A given Pod (as defined by a UID) is never "rescheduled" to a different node; instead,
-that Pod can be replaced by a new, near-identical Pod, with even the same name i
+that Pod can be replaced by a new, near-identical Pod, with even the same name if
 desired, but with a different UID.
 
 When something is said to have the same lifetime as a Pod, such as a
@@ -207,7 +207,7 @@ Each state has a specific meaning:
 <!--
 ### `Waiting` {#container-state-waiting}
 
-If a container is not in either the `Running` or `Terminated` state, it `Waiting`.
+If a container is not in either the `Running` or `Terminated` state, it is `Waiting`.
 A container in the `Waiting` state is still running the operations it requires in
 order to complete start up: for example, pulling the container image from a container
 image registry, or applying {{< glossary_tooltip text="Secret" term_id="secret" >}}
@@ -228,14 +228,14 @@ Reason 字段，其中给出了容器处于等待状态的原因。
 ### `Running` {#container-state-running}
 
 The `Running` status indicates that a container is executing without issues. If there
-was a `postStart` hook configured, it has already executed and executed. When you use
+was a `postStart` hook configured, it has already executed and finished. When you use
 `kubectl` to query a Pod with a container that is `Running`, you also see information
 about when the container entered the `Running` state.
 -->
 ### `Running`（运行中）     {#container-state-running}
 
 `Running` 状态表明容器正在执行状态并且没有问题发生。
-如果配置了 `postStart` 回调，那么该回调已经执行完成。
+如果配置了 `postStart` 回调，那么该回调已被执行并且完成了。
 如果你使用 `kubectl` 来查询包含 `Running` 状态的容器的 Pod 时，你也会看到
 关于容器进入 `Running` 状态的信息。
 
